@@ -1,0 +1,32 @@
+<html ng-app="ADEModule">
+<head>
+  <title>ADE App</title>
+<script src="ADE_Angular/angular.js"></script>
+<script src="ADE_Angular/ADEModule.js"></script>
+</head>
+
+<body>
+  <h1>
+    ADE MODULE
+  </h1>
+  <div ng-controller="ADEController as adec">
+    <div>
+      <div>
+        <p>
+        Add, Delete or Edit a Module:
+        </p><input type="text" ng-model="adec.AddNew"/>
+      </div>
+      <button ng-click="adec.addNewModule()" >ADD</button>
+      <ol>
+        <li ng-repeat="a in adec.lists track by $index">
+            <span ng-hide="adec.editMode" ng-bind="a"></span>
+            <input ng-model="a" ng-show="adec.editMode" type="text" /></input>
+            <button ng-hide="adec.editMode" ng-click="adec.deleteModule($index)">DELETE</button>
+        </li>
+      </ol>
+      <button ng-hide="adec.editMode" ng-click="adec.editModule()" >EDIT</button>
+      <button ng-show="adec.editMode" ng-click="adec.editModule()" >DONE</button>
+    </div>
+  </div>
+</body>
+</html>
